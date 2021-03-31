@@ -14,7 +14,7 @@
         <encoding>UTF-8</encoding>
         <webdriver.driver>chrome</webdriver.driver>
         <serenity.version>2.4.1</serenity.version>
-        <serenity.cucumber.version>2.4.1</serenity.cucumber.version>
+        <serenity.cucumber6.version>2.4.1</serenity.cucumber6.version>
         <slf4j-simple.version>1.7.26</slf4j-simple.version>
         <assertj-core.version>3.16.1</assertj-core.version>
         <lombok.version>1.18.12</lombok.version>
@@ -37,6 +37,9 @@
                 <version>${maven.failsafe-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/**/*TestSuite.java</include>
+                    </includes>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                         <webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
@@ -44,7 +47,7 @@
                         <webdriver.timeouts.implicitlywait>8000</webdriver.timeouts.implicitlywait>
                         <webdriver.timeouts.fluentwait>5000</webdriver.timeouts.fluentwait>
                         <webdriver.wait.for.timeout>6000</webdriver.wait.for.timeout>
-                        <chrome.switches>--headless</chrome.switches>
+<!--                        <chrome.switches>&#45;&#45;headless</chrome.switches>-->
                         <serenity.browser.width>1920</serenity.browser.width>
                         <serenity.browser.height>1080</serenity.browser.height>
                     </systemPropertyVariables>
@@ -74,6 +77,14 @@
                         <version>${serenity.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -115,24 +126,6 @@
                 <webdriver.gecko.driver>src/test/resources/drivers/linux/geckodriver</webdriver.gecko.driver>
             </properties>
         </profile>
-        <profile>
-            <id>useTheForks</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${maven.failsafe-plugin.version}</version>
-                        <configuration>
-                            <includes>
-                            </includes>
-                            <forkCount>2</forkCount>
-                            <reuseForks>true</reuseForks>
-                            <argLine>-Xms256m -Xmx1524m -XX:MaxPermSize=512m -XX:MaxPermSize=256m</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
     </profiles>
 
     <dependencies>
@@ -143,12 +136,12 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-reports</artifactId>
+            <artifactId>serenity-junit</artifactId>
             <version>${serenity.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-junit</artifactId>
+            <artifactId>serenity-reports</artifactId>
             <version>${serenity.version}</version>
         </dependency>
         <dependency>
@@ -169,7 +162,7 @@
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber6</artifactId>
-            <version>${serenity.cucumber.version}</version>
+            <version>${serenity.cucumber6.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

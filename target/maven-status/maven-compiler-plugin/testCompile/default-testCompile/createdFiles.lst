@@ -1,0 +1,7 @@
+features/web/step_definitions/HomePageStepsDefinitions.class
+features/web/navigation/NavigateTo.class
+features/web/ui/HomePage.class
+features/web/CucumberWebTestSuite.class
+features/web/navigation/DemoBlazeHOmePage.class
+features/web/search/SearchFor.class
+features/web/search/SearchResult.class
