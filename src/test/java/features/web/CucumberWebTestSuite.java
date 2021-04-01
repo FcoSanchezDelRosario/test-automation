@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-       glue = {"features.web.step_definitions"},
+       glue = {"features.web.steps"},
         plugin = {"pretty"},
         features = "src/test/resources/features/web"
 )

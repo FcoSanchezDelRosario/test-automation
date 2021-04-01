@@ -12,7 +12,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tags></tags>
         <encoding>UTF-8</encoding>
-        <webdriver.driver>chrome</webdriver.driver>
         <serenity.version>2.4.1</serenity.version>
         <serenity.cucumber6.version>2.4.1</serenity.cucumber6.version>
         <slf4j-simple.version>1.7.26</slf4j-simple.version>
@@ -41,15 +40,6 @@
                         <include>**/**/*TestSuite.java</include>
                     </includes>
                     <systemPropertyVariables>
-                        <webdriver.driver>${webdriver.driver}</webdriver.driver>
-                        <webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
-                        <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
-                        <webdriver.timeouts.implicitlywait>8000</webdriver.timeouts.implicitlywait>
-                        <webdriver.timeouts.fluentwait>5000</webdriver.timeouts.fluentwait>
-                        <webdriver.wait.for.timeout>6000</webdriver.wait.for.timeout>
-<!--                        <chrome.switches>&#45;&#45;headless</chrome.switches>-->
-                        <serenity.browser.width>1920</serenity.browser.width>
-                        <serenity.browser.height>1080</serenity.browser.height>
                     </systemPropertyVariables>
                     <additionalClasspathElements>
                         <additionalClasspathElement>${basedir}/target/classes</additionalClasspathElement>
@@ -88,46 +78,6 @@
             </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>mac</id>
-            <activation>
-                <os>
-                    <family>mac</family>
-                </os>
-            </activation>
-            <properties>
-                <webdriver.chrome.driver>src/test/resources/drivers/mac/chromedriver</webdriver.chrome.driver>
-                <webdriver.gecko.driver>src/test/resources/drivers/mac/geckodriver</webdriver.gecko.driver>
-            </properties>
-        </profile>
-        <profile>
-            <id>windows</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <properties>
-                <webdriver.chrome.driver>src/test/resources/drivers/windows/chromedriver.exe</webdriver.chrome.driver>
-                <webdriver.gecko.driver>src/test/resources/drivers/windows/geckodriver.exe</webdriver.gecko.driver>
-            </properties>
-        </profile>
-        <profile>
-            <id>linux</id>
-            <activation>
-                <os>
-                    <family>unix</family>
-                    <name>Linux</name>
-                </os>
-            </activation>
-            <properties>
-                <webdriver.chrome.driver>src/test/resources/drivers/linux/chromedriver</webdriver.chrome.driver>
-                <webdriver.gecko.driver>src/test/resources/drivers/linux/geckodriver</webdriver.gecko.driver>
-            </properties>
-        </profile>
-    </profiles>
-
     <dependencies>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
