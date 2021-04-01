@@ -34,7 +34,6 @@ public class ResultList extends UIInteractionSteps {
         waitABit(2000);
                 findAllCards()
                         .filter(ByCardTitle(name))
-                //.filter(product -> product.getTitle().equalsIgnoreCase(model))
                 .findFirst()
                 .orElseThrow(() -> new Exception("Product not found"))
          .getElement().click();

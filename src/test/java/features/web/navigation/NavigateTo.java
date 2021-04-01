@@ -4,10 +4,16 @@ import net.thucydides.core.annotations.Step;
 
 public class NavigateTo {
 
-    DemoBlazeHOmePage homePage;
+    HomePage homePage;
+    CartPage cartPage;
 
-    @Step("Open Demo Blaze")
+    @Step("Land to Demo Blaze Page")
     public void theDemoBlazeHomePage() {
         homePage.open();
+    }
+
+    @Step("Land to Cart Page")
+    public void theCartPage() {
+
     }
 }
