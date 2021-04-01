@@ -1,3 +1,4 @@
+@WebFE
 Feature: Delete Product
 
   Scenario: Deleting Product
