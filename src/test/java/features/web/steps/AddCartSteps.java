@@ -19,9 +19,9 @@ public class AddCartSteps {
     AlertModal alertModal;
 
     @And("he adds to cart the model {string}")
-    public void heAddsToCartTheModel(String model) {
-        resultList.selectProduct(model);
-        productPage.addProductDesired(model);
+    public void heAddsToCartTheModel(String product) {
+        resultList.selectProduct(product);
+        productPage.addProductDesired(product);
     }
 
     @And("he accepts that the product is added")
@@ -33,4 +33,6 @@ public class AddCartSteps {
     public void lightboxWithMessageIsShown(String message) {
         assertThat(alertModal.getAlertMessage()).isEqualToIgnoringCase(message);
     }
+
+
 }

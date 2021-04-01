@@ -4,7 +4,7 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static features.web.ui.ProductPage.ADD_TO_CART;
+import static features.web.ui.CartPage.ADD_TO_CART;
 
 public class ProductPage extends UIInteractionSteps {
 

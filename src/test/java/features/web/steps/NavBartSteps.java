@@ -10,7 +10,8 @@ public class NavBartSteps {
     NavigationBar navBar;
 
     @And("he chooses {string} brand")
-    public void heChooses(String brand) {
+    public void heChoosesBrand(String brand) {
         navBar.selectBrand(brand);
+
     }
 }

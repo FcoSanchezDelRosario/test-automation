@@ -1,5 +1,6 @@
 Feature: Navigate through product categories
 
+
   Scenario Outline: James sees all the product categories
     Given James lands to home page
     When he chooses the category "<category>"

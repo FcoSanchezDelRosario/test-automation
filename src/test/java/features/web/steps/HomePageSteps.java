@@ -39,4 +39,5 @@ public class HomePageSteps {
     public void theFollowingModelIsShown(String model) {
         assertThat(searchResult.getListModelsTitle()).contains(model);
     }
+
 }
