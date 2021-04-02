@@ -73,14 +73,32 @@
                     </dependency>
                 </dependencies>
                 <executions>
-                    <execution>
-                        <id>serenity-reports</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>serenity-reports</id>-->
+<!--                        <phase>post-integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>aggregate</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
                 </executions>
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>net.serenity-bdd</groupId>-->
+<!--                        <artifactId>serenity-core</artifactId>-->
+<!--                        <version>${serenity.version}</version>-->
+<!--                        <exclusions>-->
+<!--                            <exclusion>&lt;!&ndash; exclude default report &ndash;&gt;-->
+<!--                                <groupId>net.serenity-bdd</groupId>-->
+<!--                                <artifactId>serenity-report-resources</artifactId>-->
+<!--                            </exclusion>-->
+<!--                        </exclusions>-->
+<!--                    </dependency>-->
+<!--                    <dependency>-->
+<!--                        <groupId>groupId</groupId>-->
+<!--                        <artifactId>adidas-test-automation</artifactId>-->
+<!--                        <version>1.0-SNAPSHOT</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -95,7 +113,7 @@
                         </goals>
                         <configuration>
                             <overwrite>true</overwrite>
-                            <outputDirectory>target/site/serenity/images</outputDirectory>
+                            <outputDirectory>serenity-reports/images</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>report_logo/images</directory>
@@ -108,6 +126,18 @@
         </plugins>
     </build>
     <dependencies>
+        <dependency>
+        <groupId>net.serenity-bdd</groupId>
+        <artifactId>serenity-core</artifactId>
+        <version>${serenity.version}</version>
+        <scope>test</scope>
+<!--        <exclusions>&lt;!&ndash; exclude default report &ndash;&gt;-->
+<!--            <exclusion>-->
+<!--                <groupId>net.serenity-bdd</groupId>-->
+<!--                <artifactId>serenity-report-resources</artifactId>-->
+<!--            </exclusion>-->
+<!--        </exclusions>-->
+    </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
