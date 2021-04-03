@@ -15,6 +15,7 @@ public class ProductPage extends UIInteractionSteps {
 
     @Step("accept Product added lightbox")
     public void acceptProductAdded() {
+        waitABit(2000);
         waitFor(ExpectedConditions.alertIsPresent());
         getDriver().switchTo().alert().accept();
     }
