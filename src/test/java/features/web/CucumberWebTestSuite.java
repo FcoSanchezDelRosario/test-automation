@@ -8,10 +8,12 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = {"features.web.steps"},
         plugin = {"pretty"},
-        features = {"src/test/resources/features/web/product_categories_navigation.feature",
-                "src/test/resources/features/web/add_product.feature",
-                "src/test/resources/features/web/delete_product.feature",
-                "src/test/resources/features/web/place_order.feature"}
+//        features = {"src/test/resources/features/web/d._product_categories_navigation.feature",
+//                "src/test/resources/features/web/a._add_product.feature",
+//                "src/test/resources/features/web/b._delete_product.feature",
+//                "src/test/resources/features/web/c._place_order.feature"
+//        }
+        features = {"src/test/resources/features/web"}
 )
 public class CucumberWebTestSuite {
 }

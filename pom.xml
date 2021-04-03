@@ -37,7 +37,9 @@
                 <version>${maven.failsafe-plugin.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/**/*TestSuite.java</include>
+                        <include>**/**/CucumberWebTestSuite.java</include>
+                        <include>**/**/CucumberApiTestSuite.java</include>
+
                     </includes>
                 </configuration>
                 <executions>
@@ -73,50 +75,33 @@
                     </dependency>
                 </dependencies>
                 <executions>
-<!--                    <execution>-->
-<!--                        <id>serenity-reports</id>-->
-<!--                        <phase>post-integration-test</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>aggregate</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
                 </executions>
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>net.serenity-bdd</groupId>-->
-<!--                        <artifactId>serenity-core</artifactId>-->
-<!--                        <version>${serenity.version}</version>-->
-<!--                        <exclusions>-->
-<!--                            <exclusion>&lt;!&ndash; exclude default report &ndash;&gt;-->
-<!--                                <groupId>net.serenity-bdd</groupId>-->
-<!--                                <artifactId>serenity-report-resources</artifactId>-->
-<!--                            </exclusion>-->
-<!--                        </exclusions>-->
-<!--                    </dependency>-->
-<!--                    <dependency>-->
-<!--                        <groupId>groupId</groupId>-->
-<!--                        <artifactId>adidas-test-automation</artifactId>-->
-<!--                        <version>1.0-SNAPSHOT</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>copy-resources-images</id>
-                        <phase>validate</phase>
+                        <phase>post-integration-test</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
                             <overwrite>true</overwrite>
-                            <outputDirectory>serenity-reports/images</outputDirectory>
+                            <outputDirectory>${basedir}/target/site/serenity/images</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>report_logo/images</directory>
+                                    <filtering>true</filtering>
                                 </resource>
                             </resources>
                         </configuration>
@@ -125,25 +110,20 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
         <groupId>net.serenity-bdd</groupId>
         <artifactId>serenity-core</artifactId>
         <version>${serenity.version}</version>
         <scope>test</scope>
-<!--        <exclusions>&lt;!&ndash; exclude default report &ndash;&gt;-->
-<!--            <exclusion>-->
-<!--                <groupId>net.serenity-bdd</groupId>-->
-<!--                <artifactId>serenity-report-resources</artifactId>-->
-<!--            </exclusion>-->
-<!--        </exclusions>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-core</artifactId>
+                </exclusion>
+            </exclusions>
     </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-core</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
@@ -167,15 +147,19 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-ensure</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber6</artifactId>
             <version>${serenity.cucumber6.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>6.10.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>6.10.2</version>
         </dependency>
         <dependency>
             <groupId>commons-net</groupId>
@@ -204,6 +188,21 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.4.0</version>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-api</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.ow2.asm</groupId>-->
+<!--                    <artifactId>asm</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
