@@ -1,7 +1,6 @@
 @WebFE
 Feature: Place Order
 
-  @ScenarioC
   Scenario: purchasing products
     Given James sees the total price
     When he chooses Place order

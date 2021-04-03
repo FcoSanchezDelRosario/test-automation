@@ -1,7 +1,6 @@
 @WebFE
 Feature: Navigate through product categories
 
-  @ScenarioD
   Scenario Outline: James sees all the product categories
     Given James lands to home page
     When he chooses the category "<category>"

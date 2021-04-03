@@ -1,7 +1,6 @@
 @WebFE
 Feature: Add Product
 
-  @ScenarioA
   Scenario Outline: Adding product desired
     Given James lands to home page
     When he chooses the category "<category>"
