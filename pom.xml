@@ -77,13 +77,6 @@
                     </dependency>
                 </dependencies>
                 <executions>
-<!--                    <execution>-->
-<!--                        <id>serenity-reports</id>-->
-<!--                        <phase>post-integration-test</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>aggregate</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
                 </executions>
             </plugin>
             <plugin>
@@ -113,7 +106,6 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-<!--                            <outputDirectory>${basedir}/target/site/serenity/images</outputDirectory>-->
                             <outputDirectory>serenity-reports/images</outputDirectory>
                             <resources>
                                 <resource>
