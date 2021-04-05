@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Pet Management" skipped="0" tests="4" time="6.58" timestamp="2021-04-05 05:46:12"><testcase name="getting Pet Availability"/><testcase name="adding a new pet"/><testcase name="Updating a pet"/><testcase name="Deleting a pet"/></testsuite>
