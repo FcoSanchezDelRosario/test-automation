@@ -30,7 +30,9 @@ Feature: Manage my products
     And he sees the purchase amount
     And the purchase amount is as expected
 
-#  Scenario: Closing lightBox Purchase
+  Scenario: Closing lightBox Purchase
+    When James chooses to confirm the purchase
+    Then the lightbox disappear
 
   Scenario Outline: Browsing all the categories of the web
     Given James lands to home page

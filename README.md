@@ -25,16 +25,26 @@ With Cucumber framework, you need to use the cucumber.options system property fo
 
     mvn clean verify -Dtags="WebFE"
     
-This command run the WebFE on Chrome browser by default. If you want to run WebFE feature on Firefox, 
-run the following command:
-
-    mvn clean verify -Dtags="WebFE" -Dwebdriver.driver=firefox
- 
 Run ApiRest Test by filtering: 
  
     mvn clean verify -Dtags="ApiRest"
     
-## Generate report 
+## Simple test contexts
+Run your tests using the Chrome WebDriver, providing a context called "chrome"
+
+     mvn verify -Dcontext=chrome -Dwebdriver.driver=chrome
+     
+Run the tests again (or in parallel, on a different machine) using Firefox:
+
+    mvn verify -Dcontext=firefox -Dwebdriver.driver=firefox
+    
+## Adding more readable tags
+Serenity will add a "context" tag to each of your tests, but you might want to make your reports even clearer by 
+adding a more meaningful tag. You can do this using the "injected.tags" system property:
+ 
+    mvn verify -Dcontext=chrome -Dwebdriver.driver=chrome -Dinjected.tags="browser:chrome" 
+      
+## Aggregating test results 
 
 Once the tests have completed, open a command window and run: 
 
