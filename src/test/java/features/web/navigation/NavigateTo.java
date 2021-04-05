@@ -14,6 +14,6 @@ public class NavigateTo {
 
     @Step("Land to Cart Page")
     public void theCartPage() {
-
+        cartPage.open();
     }
 }

@@ -3,6 +3,7 @@ package features.api.steps;
 import features.api.store.PetsStore;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 
@@ -23,5 +24,12 @@ public class StoreSteps {
     public void heHasTheInventoryOfPetsAvailable() {
         restAssuredThat(response -> response.statusCode(200));
         assertThat(Integer.valueOf(SerenityRest.lastResponse().path("available").toString())).isGreaterThan(0);
+        reportPetAvailable(SerenityRest.lastResponse().path("available").toString());
+    }
+
+    private void reportPetAvailable(String value) {
+        Serenity.recordReportData()
+                .withTitle("Available pets:")
+                .andContents(value);
     }
 }

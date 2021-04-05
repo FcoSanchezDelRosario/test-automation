@@ -20,6 +20,7 @@
         <lombok.version>1.18.12</lombok.version>
         <maven.failsafe-plugin.version>3.0.0-M4</maven.failsafe-plugin.version>
         <maven.surefire-plugin.version>3.0.0-M4</maven.surefire-plugin.version>
+        <maven.resources.overwrite>true</maven.resources.overwrite>
     </properties>
 
     <build>
@@ -36,6 +37,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven.failsafe-plugin.version}</version>
                 <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <includes>
                         <include>**/**/CucumberWebTestSuite.java</include>
                         <include>**/**/CucumberApiTestSuite.java</include>
@@ -75,15 +77,30 @@
                     </dependency>
                 </dependencies>
                 <executions>
-                    <execution>
-                        <id>serenity-reports</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>serenity-reports</id>-->
+<!--                        <phase>post-integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>aggregate</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>serenity-reports</directory>
+                            <includes>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -91,19 +108,20 @@
                 <executions>
                     <execution>
                         <id>copy-resources-images</id>
-                        <phase>post-integration-test</phase>
+                        <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <overwrite>true</overwrite>
-                            <outputDirectory>${basedir}/target/site/serenity/images</outputDirectory>
+<!--                            <outputDirectory>${basedir}/target/site/serenity/images</outputDirectory>-->
+                            <outputDirectory>serenity-reports/images</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>report_logo/images</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
+                            <overwrite>${maven.resources.overwrite}</overwrite>
                         </configuration>
                     </execution>
                 </executions>

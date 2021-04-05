@@ -3,6 +3,7 @@ package features.web.steps;
 import features.web.alert_modal.AlertPurchase;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,5 +32,15 @@ public class AlertSweetModalSteps {
     @And("the purchase amount is as expected")
     public void thePurchaseAmountIsAsExpected() {
         assertThat(alertPurchase.amountValue()).isEqualToIgnoringCase(getTotalPrice());
+    }
+
+    @When("James chooses to confirm the purchase" )
+    public void jamesChoosesToConfirmThePurchase() {
+        alertPurchase.confirm();
+    }
+
+    @Then("the lightbox disappear" )
+    public void theLightboxDisappear() {
+        assertThat(alertPurchase.disappear()).isFalse();
     }
 }
