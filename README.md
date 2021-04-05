@@ -8,6 +8,11 @@ You will also need a modern Java IDE such as [IntelliJ IDE](https://www.jetbrain
 (this is our recommendation - the free Community Edition will do fine).
  Make sure that the bundled [Cucumber for Java plugin](https://plugins.jetbrains.com/plugin/7212-cucumber-for-java) is enabled.
 
+## Get the code
+Git:
+    
+    git clone https://github.com/FranciscoSanQA/adidas-test-automation.git
+
 
 ## Use Maven
 
